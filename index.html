@@ -116,12 +116,17 @@
             background-image: url('third-image.jpg');
             background-image: url('fourth-image.webp');
             background-image: url('5-image.jpg');
+            background-image: url('beu.jpg');
+            
+            /* background-repeat: no-repeat; */
             
           }
       
           .button {
             padding: 10px 20px;
             background-color: rgb(255, 255, 255);
+            background-position: center;
+            background-size: contain;
             color: rgb(0, 0, 0);
             text-decoration: none;
             font-size: 16px;
@@ -129,6 +134,7 @@
            border-radius: 12px;
            font-family: 'Bebas Neue', sans-serif;
              text-align: center;
+             
 
           }
         </style>
@@ -140,7 +146,7 @@
         <script>
             
           var imageIndex = 0;
-          var images = ['first-image.jpg', 'second-image.jpg', 'third-image.jpg' , 'fourth-image.webp' ,  '5-image.jpg' , ];
+          var images = ['beu.jpg','first-image.jpg', 'second-image.jpg', 'third-image.jpg' , 'fourth-image.webp' ,  '5-image.jpg' , ];
       
           function changeBackground() {
             imageIndex = (imageIndex + 1) % images.length;
