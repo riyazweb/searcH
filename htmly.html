@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+  <title>Pomodoro Timer</title>
+  <body>
+    
+  <style>
+    body{
+      padding: 15%;
+      background-image: url('beu.jpg');
+      background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+    }
+    /* Add some styling for the timer display */
+    #timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 250px;
+      height: 50px;
+      font-size: 20px;
+      border-radius: 25px;
+      background-color: #eee;
+      margin: 20px auto;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    /* Add some styling for the input fields */
+    input[type='number'] {
+      width: 25px;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+	  padding-left: 5%;
+	  color: black;
+    font-family: 'Bebas Neue', sans-serif;
+    
+    }
+	label{
+		padding-left: 32%;
+    font-family: 'Bebas Neue', sans-serif;
+	}
+  button{
+    font-family: 'Bebas Neue', sans-serif;
+    
+    width: fit-content;
+      height: 30px;
+      padding: 10x;
+      border: 1px solid #ccc;
+      
+      background-color: #eee;
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      margin: 0 auto;
+      border-radius: 50px;
+      text-align: center; margin: auto;
+  }
+  </style>
+</head>
+<body>
+  <!-- Display the timer -->
+  <div id="timer"></div>
+
+  <!-- Add input fields for the Pomodoro and break lengths -->
+  <label for="pomodoro-length">Pomodoro Length (minutes):</label>
+  <input type="number" id="pomodoro-length" value="25">
+  <br>
+  <label for="break-length">Break Length (minutes):</label>
+  <input type="number" id="break-length" value="5">
+
+  <!-- Add buttons for starting and resetting the timer -->
+  <button id="start">Start</button>
+  <button id="reset">Reset</button>
+
+  <script>
+    // Get references to the timer display, input fields, and buttons
+    const timerDisplay = document.getElementById('timer');
+    const pomodoroInput = document.getElementById('pomodoro-length');
+    const breakInput = document.getElementById('break-length');
+    const startButton = document.getElementById('start');
+    const resetButton = document.getElementById('reset');
+
+    // Set the initial state of the timer
+    let isRunning = false;
+    let timeLeft = 0; // time left in seconds
+    let timerType = 'Pomodoro'; // can be 'Pomodoro' or 'Break'
+
+    // Function to display the time left in the timer
+    function displayTimeLeft() {
+      // Convert the time left in seconds to minutes and seconds
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+
+      // Display the time left in the timer display
+      timerDisplay.textContent = `${minutes}:${seconds}`;
+    }
+
+    // Function to start the timer
+    function startTimer() {
+      // Set the timer to be running
+      isRunning = true;
+
+      // Get the length of the Pomodoro and break timers from the input fields
+      const pomodoroLength = pomodoroInput.value * 60;
+      const breakLength = breakInput.value * 60;
+
+      // Set the time left based on the current timer type
+      if (timerType === 'Pomodoro') {
+        timeLeft = pomodoroLength;
+     
+	} else {
+        timeLeft = breakLength;
+      }
+
+      // Update the timer display every 1000 milliseconds (1 second)
+      setInterval(() => {
+        // Decrement the time left
+        timeLeft--;
+
+        // Display the updated time left
+        displayTimeLeft();
+
+        // If the timer has reached 0, reset it and switch to the other type of timer
+        if (timeLeft === 0) {
+          resetTimer();
+          if (timerType === 'Pomodoro') {
+            timerType = 'Break';
+            timeLeft = breakLength;
+          } else {
+            timerType = 'Pomodoro';
+            timeLeft = pomodoroLength;
+          }
+        }
+      }, 1000);
+    }
+
+    // Function to reset the timer
+    function resetTimer() {
+      // Set the timer to be not running
+      isRunning = false;
+
+      // Reset the time left to 0
+      timeLeft = 0;
+
+      // Display the reset time
+      displayTimeLeft();
+    }
+
+    // Add event listeners to the start and reset buttons
+    startButton.addEventListener('click', startTimer);
+    resetButton.addEventListener('click', resetTimer);
+
+    // Display the initial time left in the timer
+    displayTimeLeft();
+  </script>
+</body>
+
+</html>
