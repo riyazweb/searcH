@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
   <title>Pomodoro Timer</title>
-  <body>   
-   
-
-    
   <style>
     body{
       padding: 15%;
       background-image: url('beu.jpg');
       background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-   
- -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-  overflow-y: scroll; 
-}
+      background-position: center center;
+      background-size: cover;
+      -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      scrollbar-width: none; /* for Firefox */
+      overflow-y: scroll;
+    }
 
-body::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
-}
-#progress-bar {
-    width: 100%;
-    height: 15px;
-    background-color: white;
-    border-radius: 25px;
-    color: black;
-    align-items: ;
+    body::-webkit-scrollbar {
+      display: none; /* for Chrome, Safari, and Opera */
+    }
 
-  }
+    #progress-bar {
+      width: 100%;
+      height: 15px;
+      background-color: white;
+      border-radius: 25px;
+      color: black;
+    }
 
     /* Add some styling for the timer display */
     #timer {
@@ -54,37 +48,37 @@ body::-webkit-scrollbar {
       border: none;
       border-radius: 5px;
       text-align: center;
-	  padding-left: 5%;
-	  color: black;
-    font-family: 'Bebas Neue', sans-serif;
-    
+      padding-left: 5%;
+      color: black;
+      font-family: 'Bebas Neue', sans-serif;
     }
-	label{
-		padding-left: 32%;
-    font-family: 'Bebas Neue', sans-serif;
-	}
-  button{
-    font-family: 'Bebas Neue', sans-serif;
     
-    width: fit-content;
+    label {
+      padding-left: 32%;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    button {
+      font-family: 'Bebas Neue', sans-serif;
+      width: fit-content;
       height: 30px;
       padding: 10x;
       border: 1px solid #ccc;
-      
       background-color: #eee;
       cursor: pointer;
       font-family: 'Bebas Neue', sans-serif;
       margin: 0 auto;
       border-radius: 50px;
-      text-align: center; margin: auto;
-  }
+      text-align: center;
+      margin: auto;
+    }
   </style>
 </head>
 <body> 
- <div id="progress-bar"></div>
+  <div id="progress-bar"></div>
   <!-- Display the timer -->
   <div id="timer"></div>
- 
+  
   <!-- Add input fields for the Pomodoro and break lengths -->
   <label for="pomodoro-length">Pomodoro Length (minutes):</label>
   <input type="number" id="pomodoro-length" value="">
@@ -98,17 +92,16 @@ body::-webkit-scrollbar {
   <button id="skip-break">Break</button>
 
   <script>
-	  
-	  function refreshPage(){
-    window.location.reload();
-} 
+    function refreshPage(){
+      window.location.reload();
+    } 
+    
     // Get references to the timer display, input fields, and buttons
     const timerDisplay = document.getElementById('timer');
     const pomodoroInput = document.getElementById('pomodoro-length');
     const breakInput = document.getElementById('break-length');
     const startButton = document.getElementById('start');
-    
-   // const resetButton = document.getElementById('reset');//
+    const resetButton = document.getElementById('reset');
 
     // Set the initial state of the timer
     let isRunning = false;
@@ -121,53 +114,22 @@ body::-webkit-scrollbar {
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
       const progressBar = document.getElementById('progress-bar');
-const totalTime = pomodoroInput.value * 60; // total time in seconds
-const progress = (totalTime - timeLeft) / totalTime;
-progressBar.style.width = `${progress * 100}%`; 
+      const totalTime = pomodoroInput.value * 60; // total time in seconds
+      const progress = (totalTime - timeLeft) / totalTime;
+      progressBar.style.width = `${progress * 100}%`; 
 
-if (timeLeft >= 0) {
-  timerDisplay.textContent = timeLeft;
-}
-else {
-  timeLeft = 0;
-  timerDisplay.textContent = timeLeft;
-  clearInterval(interval); // stop the timer
-}
-
+      if (timeLeft >= 0) {
+        timerDisplay.textContent = timeLeft;
+      }
+      else {
+        timeLeft = 0;
+        timerDisplay.textContent = timeLeft;
+        clearInterval(interval); // stop the timer
+      }
 
       // Display the time left in the timer display
       timerDisplay.textContent = `${minutes}:${seconds}`;
-
-      setInterval(() => {
-        // Decrement the time left
-        timeLeft--;
-
-        // Display the updated time left
-        displayTimeLeft();
-        
-          function updateProgressBar() {
-    // Calculate the percentage of time left
-    const percentage = (timeLeft / (pomodoroInput.value * 60)) * 100;
-
-    // Update the width of the progress bar
-    progressBar.style.width = `${percentage}%`;
-  }
-
-        // If the timer has reached 0, reset it and switch to the other type of timer
-        if (timeLeft === 0) {
-          resetTimer();
-          if (timerType === 'Pomodoro') {
-            timerType = 'Break';
-            timeLeft = breakLength;
-          } else {
-            timerType = 'Pomodoro';
-            timeLeft = pomodoroLength;
-          }
-        }
-      }, 10000);
     }
-
-   
 
     // Function to start the timer
     function startTimer() {
@@ -178,20 +140,18 @@ else {
       const pomodoroLength = pomodoroInput.value * 60;
       const breakLength = breakInput.value * 60;
       const skipBreakButton = document.getElementById('skip-break');
-     skipBreakButton.addEventListener('click', skipToBreak);
-
+      skipBreakButton.addEventListener('click', skipToBreak);
 
       // Set the time left based on the current timer type
       if (timerType === 'Pomodoro') {
         timeLeft = pomodoroLength;
      
-	} else {
+	  } else {
         timeLeft = breakLength;
-
       }
 
       // Update the timer display every 1000 milliseconds (1 second)
-      setInterval(() => {
+      interval = setInterval(() => {
         // Decrement the time left
         timeLeft--;
 
@@ -225,34 +185,25 @@ else {
     }
   
     function skipToBreak() {
-  // Set the timer to be running
-  isRunning = true;
+      // Set the timer to be running
+      isRunning = true;
 
-  // Set the time left to the break length
-  timeLeft = breakInput.value * 60;
+      // Set the time left to the break length
+      timeLeft = breakInput.value * 60;
 
-  
-  // Set the timer type to be break
-  timerType = 'Break';
+      // Set the timer type to be break
+      timerType = 'Break';
 
-  // Display the time left in the timer
-  displayTimeLeft();
+      // Display the time left in the timer
+      displayTimeLeft();
 
-  // Start the timer countdown
-  setInterval(() => {
+      // Start the timer countdown
+      interval = setInterval(() => {
         // Decrement the time left
         timeLeft--;
 
         // Display the updated time left
         displayTimeLeft();
-        
-          function updateProgressBar() {
-    // Calculate the percentage of time left
-    const percentage = (timeLeft / (pomodoroInput.value * 60)) * 100;
-
-    // Update the width of the progress bar
-    progressBar.style.width = `${percentage}%`;
-  }
 
         // If the timer has reached 0, reset it and switch to the other type of timer
         if (timeLeft === 0) {
@@ -272,11 +223,6 @@ else {
     // Add event listeners to the start and reset buttons
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
-
-    
-    // Display the initial time left in the timer
-    displayTimeLeft();
   </script>
 </body>
-
 </html>
