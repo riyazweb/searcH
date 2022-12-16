@@ -73,15 +73,19 @@
 
   <!-- Add buttons for starting and resetting the timer -->
   <button id="start">Start</button>
-  <button id="reset">Reset</button>
+  <button id="reset" type="submit" onClick="refreshPage()">Reset</button>
 
   <script>
+	  
+	  function refreshPage(){
+    window.location.reload();
+} 
     // Get references to the timer display, input fields, and buttons
     const timerDisplay = document.getElementById('timer');
     const pomodoroInput = document.getElementById('pomodoro-length');
     const breakInput = document.getElementById('break-length');
     const startButton = document.getElementById('start');
-    const resetButton = document.getElementById('reset');
+   // const resetButton = document.getElementById('reset');//
 
     // Set the initial state of the timer
     let isRunning = false;
