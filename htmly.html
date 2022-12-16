@@ -123,7 +123,17 @@ body::-webkit-scrollbar {
       const progressBar = document.getElementById('progress-bar');
 const totalTime = pomodoroInput.value * 60; // total time in seconds
 const progress = (totalTime - timeLeft) / totalTime;
-progressBar.style.width = `${progress * 100}%`;
+progressBar.style.width = `${progress * 100}%`; 
+
+if (timeLeft >= 0) {
+  timerDisplay.textContent = timeLeft;
+}
+else {
+  timeLeft = 0;
+  timerDisplay.textContent = timeLeft;
+  clearInterval(interval); // stop the timer
+}
+
 
       // Display the time left in the timer display
       timerDisplay.textContent = `${minutes}:${seconds}`;
@@ -157,7 +167,7 @@ progressBar.style.width = `${progress * 100}%`;
       }, 10000);
     }
 
-    
+   
 
     // Function to start the timer
     function startTimer() {
@@ -177,6 +187,7 @@ progressBar.style.width = `${progress * 100}%`;
      
 	} else {
         timeLeft = breakLength;
+
       }
 
       // Update the timer display every 1000 milliseconds (1 second)
