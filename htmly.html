@@ -82,6 +82,7 @@ body::-webkit-scrollbar {
   <!-- Add buttons for starting and resetting the timer -->
   <button id="start">Start</button>
   <button id="reset" type="submit" onClick="refreshPage()">Reset</button>
+  <button id="skip-break">Break</button>
 
   <script>
 	  
@@ -93,6 +94,7 @@ body::-webkit-scrollbar {
     const pomodoroInput = document.getElementById('pomodoro-length');
     const breakInput = document.getElementById('break-length');
     const startButton = document.getElementById('start');
+    
    // const resetButton = document.getElementById('reset');//
 
     // Set the initial state of the timer
@@ -118,6 +120,9 @@ body::-webkit-scrollbar {
       // Get the length of the Pomodoro and break timers from the input fields
       const pomodoroLength = pomodoroInput.value * 60;
       const breakLength = breakInput.value * 60;
+      const skipBreakButton = document.getElementById('skip-break');
+     skipBreakButton.addEventListener('click', skipToBreak);
+
 
       // Set the time left based on the current timer type
       if (timerType === 'Pomodoro') {
@@ -160,11 +165,49 @@ body::-webkit-scrollbar {
       // Display the reset time
       displayTimeLeft();
     }
+  
+    function skipToBreak() {
+  // Set the timer to be running
+  isRunning = true;
+
+  // Set the time left to the break length
+  timeLeft = breakInput.value * 60;
+
+  
+  // Set the timer type to be break
+  timerType = 'Break';
+
+  // Display the time left in the timer
+  displayTimeLeft();
+
+  // Start the timer countdown
+  setInterval(() => {
+        // Decrement the time left
+        timeLeft--;
+
+        // Display the updated time left
+        displayTimeLeft();
+
+        // If the timer has reached 0, reset it and switch to the other type of timer
+        if (timeLeft === 0) {
+          resetTimer();
+          if (timerType === 'Pomodoro') {
+            timerType = 'Break';
+            timeLeft = breakLength;
+          } else {
+            timerType = 'Pomodoro';
+            timeLeft = pomodoroLength;
+          }
+        }
+      }, 10000);
+    }
+
 
     // Add event listeners to the start and reset buttons
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
 
+    
     // Display the initial time left in the timer
     displayTimeLeft();
   </script>
