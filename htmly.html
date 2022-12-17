@@ -116,7 +116,7 @@
       const progressBar = document.getElementById('progress-bar');
       const totalTime = pomodoroInput.value * 60; // total time in seconds
       const progress = (totalTime - timeLeft) / totalTime;
-      progressBar.style.width = `${progress * 100}%`; 
+      progressBar.style.width = `${100 - progress- * 100}%`;
 
       if (timeLeft >= 0) {
         timerDisplay.textContent = timeLeft;
