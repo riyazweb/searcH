@@ -5,9 +5,7 @@
   <style>
 	  
  
-          body{
-      
-      background-image: url('second-image.jpg');
+          body{ background-image: url('second-image.jpg');
       background-image: url('first-image.jpg');
       background-image: url('third-image.jpg');
       background-image: url('fourth-image.webp');
@@ -24,7 +22,7 @@
       background-image: url('riyaz9.jpg');
       background-image: url('riyaz10.jpg');
       background-image: url('riyaz11.jpg');
-      background-repeat: no-repeat;
+ background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
       -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -97,8 +95,7 @@
 	<script>
             
          var imageIndex = 0;
-
-         var images = ['second-image.jpg', 'first-image.jpg', 'third-image.jpg' , 'fourth-image.webp' ,  '5-image.jpg','riyaz1.jpg','riyaz2.jpg','riyaz3.jpg','riyaz4.jpg','riyaz5.jpg','riyaz6.jpg','riyaz7.jpg','riyaz8.jpg','riyaz9.jpg','riyaz10.jpg','riyaz11.png'];
+  var images = [ 'first-image.jpg', 'second-image.jpg','third-image.jpg' , 'fourth-image.webp' ,'5-image.jpg','riyaz1.jpg','riyaz2.jpg','riyaz3.jpg','riyaz4.jpg','riyaz5.jpg','riyaz6.jpg','riyaz7.jpg','riyaz8.jpg','riyaz9.jpg','riyaz10.jpg','riyaz11.png'];
 
      function changeBackground() {
             imageIndex = (imageIndex + 1) % images.length;
