@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>	
+  
   <title>Pomodoro Timer</title>
   <style>
 	  
@@ -109,8 +110,15 @@
 	    text-align: center;
       margin: auto; }
 	    
-	 
-
+	 .gt{ position: absolute;
+  top: 2px;
+  right: 1px;
+  font-family: 'Muro';
+  font-size: 10%;
+  
+}
+ 
+ 
   </style>
 	<script>
             
@@ -122,10 +130,13 @@
             document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
             
           }
-          
+
         </script>
 </head>
 <body> 
+<marquee class="gt" style="color: white; font-size: 15px;">padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai </marquee>
+
+
   <div id="progress-bar"></div>
   <!-- Display the timer -->
   <div id="timer"></div>
