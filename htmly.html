@@ -3,6 +3,24 @@
 <head>	
   
   <title>Pomodoro Timer</title>
+	
+	
+	<body>
+  <!-- Your HTML content goes here -->
+
+  <!-- Add a script tag to include your JavaScript code -->
+  <script>
+    // Check if a selected background image is stored in local storage
+    const selectedBgImage = localStorage.getItem('selectedBgImage');
+
+    // If a selected background image is found, set it as the body's background
+    if (selectedBgImage) {
+      document.body.style.background = `url(${selectedBgImage}) no-repeat center center / cover`;
+    }
+  </script>
+		
+</body>
+
   <style>
 	  
  body{   padding: 15%;
@@ -133,6 +151,14 @@ var images = ['first-image.jpg', 'second-image.jpg', 'third-image.jpg', 'fourth-
   imageIndex = (imageIndex + 1) % images.length;
   document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
 }
+// Get the selected background image from the hidden input field
+		{const selectedBgImage = document.getElementById('selected-bg-image').value;
+
+// Set the selected background image as the body's background
+document.body.style.background = `url(${selectedBgImage}) no-repeat center center / cover`;
+
+// Store the selected background image in local storage
+localStorage.setItem('selectedBgImage', selectedBgImage);}
 
 // When the page loads, check if there is a saved image index in local storage
 var savedIndex = localStorage.getItem('imageIndex');
