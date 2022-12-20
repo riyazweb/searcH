@@ -128,9 +128,21 @@
      function changeBackground() {
             imageIndex = (imageIndex + 1) % images.length;
             document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
+	      localStorage.setItem('imageIndex', imageIndex);
             
           }
-
+var savedIndex = localStorage.getItem('imageIndex');
+if (savedIndex) {
+  // If there is a saved index, set the image index to the saved value
+  imageIndex = savedIndex;
+	document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
+}
+		
+		
+		
+		
+		
+		
         </script>
 </head>
 <body> 
