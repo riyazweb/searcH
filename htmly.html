@@ -122,21 +122,27 @@
   </style>
 	<script>
             
-         var imageIndex = 0;
-  var images = [ 'first-image.jpg', 'second-image.jpg','third-image.jpg' , 'fourth-image.webp' ,'5-image.jpg','6-image.jpg','riyaz1.jpg','riyaz2.jpg','riyaz3.jpg','riyaz4.jpg','riyaz5.jpg','riyaz6.jpg','riyaz7.jpg','riyaz8.jpg','riyaz9.jpg','riyaz10.jpg','riyaz11.png'];
+    var imageIndex = 0;
+var images = ['first-image.jpg', 'second-image.jpg', 'third-image.jpg', 'fourth-image.webp', '5-image.jpg', '6-image.jpg', 'riyaz1.jpg', 'riyaz2.jpg', 'riyaz3.jpg', 'riyaz4.jpg', 'riyaz5.jpg', 'riyaz6.jpg', 'riyaz7.jpg', 'riyaz8.jpg', 'riyaz9.jpg', 'riyaz10.jpg', 'riyaz11.png'];
 
-     function changeBackground() {
-            imageIndex = (imageIndex + 1) % images.length;
-            document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
-	      localStorage.setItem('imageIndex', imageIndex);
-            
-          }
+
+  function changeBackground() {
+  // Save the current image index to local storage
+  localStorage.setItem('imageIndex', imageIndex);
+  // Increment the image index and set the body's background image
+  imageIndex = (imageIndex + 1) % images.length;
+  document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
+}
+
+// When the page loads, check if there is a saved image index in local storage
 var savedIndex = localStorage.getItem('imageIndex');
 if (savedIndex) {
   // If there is a saved index, set the image index to the saved value
   imageIndex = savedIndex;
-	document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')';
 }
+// Set the background image to the current image index
+		{ document.body.style.backgroundImage = 'url(' + images[imageIndex] + ')'; }
+
 		
 		
 		
