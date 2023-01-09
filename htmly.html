@@ -317,20 +317,25 @@
 	  
 	  
 	  
-	  
-	  // Get the input element
+// Get the input element
 const input = document.getElementById('youtube-link');
 
-// Save the value of the input field to localStorage when the input value changes
-input.addEventListener('input', (event) => {
-  localStorage.setItem('youtubeLink', event.target.value);
-});
+// Check if the element exists
+if (input) {
+  // Save the value of the input field to localStorage when the input value changes
+  input.addEventListener('input', (event) => {
+    localStorage.setItem('youtubeLink', event.target.value);
+  });
 
-// Retrieve the value from localStorage and set it as the value of the input field
-const storedValue = localStorage.getItem('youtubeLink');
-if (storedValue) {
-  input.value = storedValue;
+  // Retrieve the value from localStorage and set it as the value of the input field
+  const storedValue = localStorage.getItem('youtubeLink');
+  if (storedValue) {
+    input.value = storedValue;
+  }
+} else {
+  console.error("Error: element with id 'youtube-link' not found");
 }
+
 
   </script>
 
