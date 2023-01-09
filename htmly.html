@@ -314,6 +314,24 @@
     // Add event listeners to the start and reset buttons
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
+	  
+	  
+	  
+	  
+	  // Get the input element
+const input = document.getElementById('youtube-link');
+
+// Save the value of the input field to localStorage when the input value changes
+input.addEventListener('input', (event) => {
+  localStorage.setItem('youtubeLink', event.target.value);
+});
+
+// Retrieve the value from localStorage and set it as the value of the input field
+const storedValue = localStorage.getItem('youtubeLink');
+if (storedValue) {
+  input.value = storedValue;
+}
+
   </script>
 
 <div style="display: flex; align-items: center;">
