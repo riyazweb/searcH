@@ -154,7 +154,7 @@
         </script>
 </head>
 <body> 
-<marquee class="gt" style="color: white; font-size: 15px;">padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai </marquee>
+<marquee class="gt" id="close-btn" style="color: white; font-size: 15px;">padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai </marquee>
 
 
   <div id="progress-bar"></div>
@@ -307,7 +307,13 @@
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
 	  
-	  
+	    // Close app
+                document.getElementById("close-btn").addEventListener("click", (e) => {
+                    var window = BrowserWindow.getFocusedWindow();
+                    window.close();
+                });
+            };
+
 	  
   </script>
 	
