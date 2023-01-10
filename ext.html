@@ -40,7 +40,7 @@
 	 background-size: cover;
 	 
 	
-	
+	-webkit-app-region: drag;
 	 
 }
 
@@ -48,6 +48,7 @@
       padding-left: 32%;
       font-family: 'Bebas Neue', sans-serif;
       color: white;
+	     -webkit-app-region: drag;
     }
 
     body::-webkit-scrollbar {
@@ -60,6 +61,7 @@
       background-color: white;
       border-radius: 25px;
       color: black;
+	    -webkit-app-region: drag;
     }
 
     /* Add some styling for the timer display */
@@ -75,6 +77,7 @@
       margin: 20px auto;
       text-align: center;
       font-family: 'Bebas Neue', sans-serif;
+	    -webkit-app-region: drag;
     }
 
     /* Add some styling for the input fields */
@@ -87,6 +90,7 @@
       padding-left: 5%;
       color: black;
       font-family: 'Bebas Neue', sans-serif;
+	    -webkit-user-select: none;
     }
     
  
@@ -104,6 +108,7 @@
       border-radius: 50px;
       text-align: center;
       margin: auto;
+	 -webkit-user-select: none;
 	
     }
 	  
@@ -129,7 +134,7 @@
   font-family: 'Muro';
   font-size: 10%;
  -webkit-user-select: none;
-  -webkit-app-region: drag;
+
 }
  
  
@@ -156,7 +161,7 @@
   <div id="timer"></div>
   
   <!-- Add input fields for the Pomodoro and break lengths -->
-  <label for="pomodoro-length" onclick="window.location.href = 'https://riyazweb.github.io/taskbar/';" >Pomodoro Length (minutes):</label>
+  <label for="pomodoro-length">Pomodoro Length (minutes):</label>
   <input type="number" id="pomodoro-length" value="">
   <br>
   <label for="break-length">Break Length (minutes):</label>
