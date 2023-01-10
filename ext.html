@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>	
-  <div id="scrollbar-container">
-    <div id="content">
+<head>	  <div id="content"> 
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+    #content{
+        height: 300px;
+        width: 400px;
+        overflow: hidden;
+    }
+    #scrollbar {
+        height: 300px;
+        width: 20px;
+        position: relative;
+    }
+
+    #handle {
+        height: 50px;
+        width: 20px;
+        background: gray;
+        position: absolute;
+        top: 0;
+    }
+    </style>
   <title>Pomodoro Timer</title>
   <style>
 	  
@@ -299,13 +319,22 @@
     resetButton.addEventListener('click', resetTimer);
   </script>
 	
-	 </div>
 </div>
-<script>
-    $("#scrollbar-container").mCustomScrollbar({
-        theme: "dark",
-        mouseWheel:{ enable: true }
+	
+	div id="scrollbar">
+    <div id="handle"></div>
+	<script>
+    $(document).ready(function(){
+        $( "#handle" ).draggable({
+        axis: "y",
+        containment: "parent",
+        drag: function( event, ui ) {
+            var percentage = (ui.position.top / ($("#scrollbar").height() - $("#handle").height())) * 100;
+            $("#content").scrollTop(percentage * ($("#content")[0].scrollHeight - $("#content").height()) / 100);
+        }
+        });
     });
-</script>
+  </script>
+	
 </body>
 </html>
