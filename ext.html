@@ -306,6 +306,24 @@
     // Add event listeners to the start and reset buttons
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
+	  
+	  
+	const marquee = document.querySelector('.gt');
+marquee.addEventListener('dblclick', function() {
+  // code to close the application
+});
+
+	  
+	  
+	  const { remote } = require('electron');
+const app = remote.app;
+
+marquee.addEventListener('dblclick', function() {
+  app.quit();
+});
+
+	  
+	  
   </script>
 	
 </div>
