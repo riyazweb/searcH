@@ -154,7 +154,7 @@
         </script>
 </head>
 <body> 
-<marquee class="gt" id="close-btn" style="color: white; font-size: 15px;">padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai </marquee>
+<marquee  onClick="closeWindow()" class="gt" id="close-btn" style="color: white; font-size: 15px;">padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai padhle bhai </marquee>
 
 
   <div id="progress-bar"></div>
@@ -307,14 +307,11 @@
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
 	  
-	    // Close app
-                document.getElementById("close-btn").addEventListener("click", (e) => {
-                    var window = BrowserWindow.getFocusedWindow();
-                    window.close();
-                });
-            };
-
-	  
+	function closeWindow() {
+        const remote = (window.require) ? window.require("electron").remote : null;
+        const WIN = remote.getCurrentWindow();
+        WIN.close();
+    }
   </script>
 	
 </div>
