@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>	
-  
+  <div id="scrollbar-container">
+    <div id="content">
   <title>Pomodoro Timer</title>
   <style>
 	  
@@ -297,5 +298,14 @@
     startButton.addEventListener('click', startTimer);
     resetButton.addEventListener('click', resetTimer);
   </script>
+	
+	 </div>
+</div>
+<script>
+    $("#scrollbar-container").mCustomScrollbar({
+        theme: "dark",
+        mouseWheel:{ enable: true }
+    });
+</script>
 </body>
 </html>
