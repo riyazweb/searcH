@@ -247,7 +247,7 @@
       <script>
         // Set the target dates for the countdowns
         const aprilTargetDate = new Date("April 6, 2023");
-        const januaryTargetDate = new Date("January 25, 2023");
+        const januaryTargetDate = new Date("January 29, 2023");
     
         // Function to update the countdown display
         function updateCountdown() {
@@ -261,7 +261,7 @@
           const minutesLeftApril = Math.floor((timeLeftApril % (1000 * 60 * 60)) / (1000 * 60));
           const secondsLeftApril = Math.floor((timeLeftApril % (1000 * 60)) / 1000);
     
-          // Calculate the time left until January 25, 2023
+          // Calculate the time left until January 29, 2023
           const timeLeftJanuary = januaryTargetDate - currentDate;
           const daysLeftJanuary = Math.floor(timeLeftJanuary / (1000 * 60 * 60 * 24));
           const hoursLeftJanuary = Math.floor((timeLeftJanuary % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -270,7 +270,7 @@
     
           // Display the time left in the appropriate elements
           document.getElementById("aprilCountdown").innerHTML = `${daysLeftApril} days, ${hoursLeftApril} hours, ${minutesLeftApril} minutes, and ${secondsLeftApril} seconds left until April 6, 2023`;
-          document.getElementById("januaryCountdown").innerHTML = `${daysLeftJanuary} days, ${hoursLeftJanuary} hours, ${minutesLeftJanuary} minutes, and ${secondsLeftJanuary} seconds left until January 25, 2023`;
+          document.getElementById("januaryCountdown").innerHTML = `${daysLeftJanuary} days, ${hoursLeftJanuary} hours, ${minutesLeftJanuary} minutes, and ${secondsLeftJanuary} seconds left until January 29, 2023`;
         }
     
         // Update the countdown every second
